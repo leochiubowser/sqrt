@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1 id="h1"></h1>
+    <script>
+        var h1 = document.getElementById("h1");
+
+        var input = prompt("請輸入想要開根號的數:");
+        const total_times = 14 + input.length;
+        input = parseInt(input);
+
+
+        var index = 1;
+        var index_plus = 1;
+        var times = 0;
+        var result;
+        var max = input;
+        var min;
+
+
+        while (times < total_times) {
+            if (Math.pow(max - index, 2) < input) {
+                min = max - index;
+                max = min + index_plus;
+                index = 0;
+                index_plus /= 10;
+                times += 1;
+            }
+            else {
+                index += index_plus;
+            }
+        }
+
+        result = min;
+        h1.innerText = result;
+    </script>
+</body>
+
+</html>
